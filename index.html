@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>404!</title>
+    <style>
+      embed,audio{display: none;}
+      html, body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        cursor: none;
+        overflow: hidden;
+        height: 100%;
+        min-height: 100%;
+      }
+
+      html {
+        background: url(http://mkf.kiev.ua/404/404.png);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+      }
+      .bom {
+        position: absolute;
+        background: url(http://mkf.kiev.ua/404/st.png);
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+      }
+      #target {
+        background: url(http://mkf.kiev.ua/404/8288950.png);
+        width: 250px;
+        height: 200px;
+        background-size: cover;
+        position: absolute;
+      }
+
+      #x,#y {
+        position: absolute;
+        font-size: 8px;
+        font-family: arial, verdana;
+      }
+    </style>
+    <script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function(){
+
+        $( document ).on( "mousemove", function( event ) {
+          var x = event.pageX - 25;
+          var y = event.pageY - 25;
+          $("#target").css({
+            top: y-75 + "px",
+            left: x-110 + "px"
+          });
+          $("#x").css({
+            top: y+15 + "px",
+            left: x-30 + "px"
+          });
+          $("#y").css({
+            top: y-15 + "px",
+            left: x+30 + "px"
+          });
+          $("#x").text(x);
+          $("#y").text(y);
+        });
+
+        $(document).on("click", function(event) {
+//          $('body').append("<embed id='mp3' autostart='true' hidden='true' src='/404/m107.mp3' />");
+//          $('body').append("<embed id='mp3' autostart='true' hidden='true' src='http://www.podst.ru/pix/user_files/2/8785/m107.mp3' />");
+          $('body').append("<audio controls='controls' autobuffer='autobuffer' autoplay='autoplay'><source src='http://mkf.kiev.ua/404/m107.mp3'/></audio>");
+          var x = event.pageX - 23;
+          var y = event.pageY - 23;
+          $("body").append("<div class='bom' style='top:"+y+"px;left:"+x+"px'></div>");
+
+          if($("audio").length > 5) {
+            $("audio:first").remove();
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+  <!--<embed id='mp3' autostart='true' hidden='true' src='http://www.podst.ru/pix/user_files/2/8785/m107.mp3' />-->
+    <audio controls='controls' autobuffer='autobuffer'><source src='http://mkf.kiev.ua/404/m107.mp3'/></audio>
+    <div id="target"></div>
+    <div id="x"></div>
+    <div id="y"></div>
+  </body>
+
+</html>
